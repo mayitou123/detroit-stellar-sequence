@@ -38,6 +38,16 @@ export const Schema = z.object({
       .prefault({}),
   }).prefault({}),
 
+  邂逅名单: z.record(z.string().describe('人物名'), z.object({
+    好感值: z.coerce.number()
+      .transform(v => _.clamp(v, 0, 100))
+      .describe('0~100，自动映射：≤20 敌对 | 21~40 疏远 | 41~60 中立 | 61~80 亲近 | ≥81 羁绊')
+      .prefault(50),
+    身份: z.string().describe('DPD搭档｜临时庇护者｜耶利哥成员｜黑市商人...').prefault('待确认'),
+    存活: z.boolean().prefault(true),
+    近况: z.string().prefault('初次遇见'),
+  }).prefault({})).prefault({}),
+
   起源角色: z.object({
     康娜: z.object({
       当前立场: z.string().describe('人类侧｜仿生人侧｜中立').prefault('人类侧'),

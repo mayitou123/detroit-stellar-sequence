@@ -7,19 +7,21 @@
       <InfoBar />
       <TabBar v-model="activeTab" :tabs="tabs" />
       <div class="cy-tab-content">
-        <OriginTab v-show="activeTab === 'origin'" />
+        <EncounterTab v-show="activeTab === 'encounter'" />
         <NewsTab v-show="activeTab === 'news'" />
         <InventoryTab v-show="activeTab === 'inventory'" />
+        <PlotTab v-show="activeTab === 'plot'" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import EncounterTab from './components/EncounterTab.vue';
 import InventoryTab from './components/InventoryTab.vue';
 import InfoBar from './components/InfoBar.vue';
 import NewsTab from './components/NewsTab.vue';
-import OriginTab from './components/OriginTab.vue';
+import PlotTab from './components/PlotTab.vue';
 import RingRow from './components/RingRow.vue';
 import TabBar from './components/TabBar.vue';
 import TitleBar from './components/TitleBar.vue';
@@ -29,11 +31,12 @@ const bgCanvas = ref<HTMLCanvasElement | null>(null);
 useBreathingBg(bgCanvas);
 
 const tabs = [
-  { id: 'origin', label: '角色' },
-  { id: 'news', label: '实时快讯' },
-  { id: 'inventory', label: '物品栏' },
+  { id: 'encounter', label: '邂逅' },
+  { id: 'news', label: '快讯' },
+  { id: 'inventory', label: '物品' },
+  { id: 'plot', label: '剧情' },
 ];
-const activeTab = useLocalStorage<string>('detroit:status:tab', 'origin');
+const activeTab = useLocalStorage<string>('detroit:status:tab', 'encounter');
 </script>
 
 <style lang="scss" scoped>
