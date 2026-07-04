@@ -2,7 +2,7 @@
   <div class="cy-info">
     <span class="cy-info-cell"><b>区域</b><i>{{ store.data.环境.当前区域 }}</i></span>
     <span class="cy-info-cell"><b>舆论</b><i>{{ store.data.环境.舆论阶段 }}</i></span>
-    <span class="cy-info-cell"><b>时间</b><i>{{ store.data.环境.时间段 }}</i></span>
+    <span class="cy-info-cell"><b>时间</b><i>{{ store.data.环境.日期 }}&nbsp;{{ store.data.环境.时间段 }}</i></span>
   </div>
 </template>
 

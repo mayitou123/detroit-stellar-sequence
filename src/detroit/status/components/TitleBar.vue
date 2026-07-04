@@ -1,7 +1,7 @@
 <template>
   <div class="cy-titlebar">
     <span class="cy-brand">CYBERLIFE · 软体状态监测</span>
-    <span class="cy-model">{{ store.data.主角.名称 }} / {{ store.data.主角.出身 }}</span>
+    <span class="cy-model">{{ store.data.主角.名称 }} / {{ store.data.主角.出身 }} / {{ store.data.主角.型号 }}</span>
   </div>
 </template>
 

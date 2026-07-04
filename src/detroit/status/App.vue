@@ -29,7 +29,7 @@ const bgCanvas = ref<HTMLCanvasElement | null>(null);
 useBreathingBg(bgCanvas);
 
 const tabs = [
-  { id: 'origin', label: '起源角色' },
+  { id: 'origin', label: '角色' },
   { id: 'news', label: '实时快讯' },
   { id: 'inventory', label: '物品栏' },
 ];
