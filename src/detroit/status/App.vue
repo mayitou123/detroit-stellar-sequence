@@ -31,10 +31,10 @@ const bgCanvas = ref<HTMLCanvasElement | null>(null);
 useBreathingBg(bgCanvas);
 
 const tabs = [
-  { id: 'encounter', label: '邂逅' },
-  { id: 'news', label: '快讯' },
-  { id: 'inventory', label: '物品' },
-  { id: 'plot', label: '剧情' },
+  { id: 'encounter', label: '关系网' },
+  { id: 'news', label: '推送' },
+  { id: 'inventory', label: '实体库' },
+  { id: 'plot', label: '日志' },
 ];
 const activeTab = useLocalStorage<string>('detroit:status:tab', 'encounter');
 </script>
