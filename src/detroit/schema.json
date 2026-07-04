@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "主角": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "名称": {
+          "default": "待初始化",
+          "type": "string"
+        },
+        "出身": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "猎手｜保姆｜偶像｜自定义，或玩家自定义出身"
+        },
+        "外观": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "仿生人的完整外观描述，自由文本"
+        },
+        "型号": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "量产型如 DM-200/CP-500/AS-800；定制型如 RK800/AX400/ST200"
+        },
+        "特殊能力": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "能力名"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "description": "能力描述"
+          }
+        },
+        "物品栏": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "物品名"
+          },
+          "additionalProperties": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "描述": {
+                "default": "待初始化",
+                "type": "string"
+              },
+              "数量": {
+                "default": 1,
+                "type": "number"
+              }
+            }
+          }
+        },
+        "人类好感度": {
+          "default": 55,
+          "description": "对人类的信任与亲近程度 0~100",
+          "$ref": "#/$defs/__schema0"
+        },
+        "软体稳定度": {
+          "default": 95,
+          "description": "出厂程序完整度/意识觉醒度 0~100，越低越接近人",
+          "$ref": "#/$defs/__schema1"
+        },
+        "机体完整度": {
+          "default": 100,
+          "description": "物理完整程度 0~100，100完好0停机",
+          "$ref": "#/$defs/__schema2"
+        }
+      }
+    },
+    "环境": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "当前区域": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "市中心｜DPD｜伊甸园｜赛博生命塔｜废弃工业区｜市郊住宅区｜边境逃亡线｜其他"
+        },
+        "当前场景": {
+          "default": "待初始化",
+          "type": "string"
+        },
+        "舆论阶段": {
+          "default": "争议期",
+          "type": "string",
+          "enum": [
+            "包容期",
+            "争议期",
+            "对立期",
+            "镇压期"
+          ]
+        },
+        "日期": {
+          "default": "2038/08/15",
+          "type": "string",
+          "description": "YYYY/MM/DD"
+        },
+        "时间段": {
+          "default": "上午",
+          "type": "string",
+          "description": "清晨｜上午｜下午｜傍晚｜深夜"
+        }
+      }
+    },
+    "剧情": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "剧情阶段": {
+          "default": "待初始化",
+          "type": "string"
+        },
+        "已触发关键事件": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "事件名"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "description": "事件简述与影响"
+          }
+        }
+      }
+    },
+    "起源角色": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "康娜": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "当前立场": {
+              "default": "人类侧",
+              "type": "string",
+              "description": "人类侧｜仿生人侧｜中立"
+            },
+            "存活": {
+              "default": true,
+              "type": "boolean"
+            },
+            "近况": {
+              "default": "在DPD执行任务",
+              "type": "string"
+            }
+          }
+        },
+        "卡拉": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "当前立场": {
+              "default": "顺从",
+              "type": "string",
+              "description": "顺从｜觉醒｜逃亡"
+            },
+            "存活": {
+              "default": true,
+              "type": "boolean"
+            },
+            "近况": {
+              "default": "在市郊住宅区服役",
+              "type": "string"
+            }
+          }
+        },
+        "露米娅": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "当前立场": {
+              "default": "童话期",
+              "type": "string",
+              "description": "童话期｜碎裂期"
+            },
+            "存活": {
+              "default": true,
+              "type": "boolean"
+            },
+            "近况": {
+              "default": "赛博星芒娱乐区人气偶像",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "新闻": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "科技前沿": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "模控生命新品、蓝血研发、仿生人技术突破、近未来科技广告"
+        },
+        "治安报告": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "异常仿生人事件、犯罪、DPD行动、政府法令与戒严动态"
+        },
+        "政经要闻": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "仿生人产业政策、失业问题、人机立法、政府态度"
+        },
+        "用户论坛": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "消费者对仿生人的吐槽、使用感受、对仿生人幻觉的评价"
+        },
+        "民意风向": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "基于当前舆论阶段的民众对仿生人的普遍看法"
+        },
+        "娱乐星闻": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "仿生人偶像与体坛动态。固定报道露米娅的行踪"
+        },
+        "警界快讯": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "DPD与仿生人探员相关消息。固定报道康娜的行踪"
+        },
+        "市井见闻": {
+          "default": "待初始化",
+          "type": "string",
+          "description": "市郊住宅区、家政仿生人相关的社会新闻。固定报道卡拉的行踪"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "__schema0": {
+      "type": "number"
+    },
+    "__schema1": {
+      "type": "number"
+    },
+    "__schema2": {
+      "type": "number"
+    }
+  }
+}

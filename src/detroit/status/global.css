@@ -1,0 +1,187 @@
+/* ===== 底特律：星序少女 · 状态栏全局样式 ===== */
+/* 环灯 = 情绪/算力外显，非数值刻度：服从与自由两端皆蓝（平静），挣扎的中间转琥珀。
+   红只留给机体受损与恐惧，不出现在稳定度。频闪一律用 opacity 起伏，不硬明灭。 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* 冷色调：底特律 CyberLife 蓝白 */
+  --c-blue: #4aa3e3;
+  --c-blue-deep: #1b9ce3;
+  --c-amber: #e3a34a;
+  --c-amber-light: #e3c14a;
+  --c-red: #e34a4a;
+  --c-text: #eaf4ff;
+  --c-text-mute: #9aa6b2;
+  --c-text-dim: #5a7a92;
+  --c-bg-deep: #0a1626;
+  --c-bg-deeper: #08111e;
+  --c-border: #1b2a3a;
+  --c-panel: rgba(13, 28, 48, 0.55);
+  --font-mono: 'Courier New', 'Microsoft YaHei', monospace;
+}
+
+/* ===== 环灯本体 ===== */
+.ring-light {
+  --ring: #4aa3e3;
+  --glow: #4aa3e3;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #05080d 0 44%, var(--ring) 47% 52%, rgba(5, 8, 13, 0) 54% 100%);
+}
+.ring-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0 30%, transparent 60%);
+  pointer-events: none;
+}
+
+/* 蓝·稳定：缓慢呼吸 */
+.ring-light[data-state='blue-stable'] {
+  --ring: #4aa3e3;
+  --glow: #4aa3e3;
+  animation: pulse-blue 3.2s ease-in-out infinite;
+}
+/* 蓝·偶现黄：越靠近挣扎中段频率越高 */
+.ring-light[data-state='blue-flicker'] {
+  --ring: #4aa3e3;
+  --glow: #4aa3e3;
+  animation: flicker-blue-yellow 5s ease-in-out infinite;
+}
+.ring-light[data-state='blue-flicker-slow'] {
+  --ring: #4aa3e3;
+  --glow: #4aa3e3;
+  animation: flicker-blue-yellow 7s ease-in-out infinite;
+}
+/* 琥珀·冲突：中速呼吸 */
+.ring-light[data-state='amber'] {
+  --ring: #e3a34a;
+  --glow: #e3a34a;
+  animation: pulse-amber 1.8s ease-in-out infinite;
+}
+/* 琥珀·起伏：亮度起伏代替硬闪 */
+.ring-light[data-state='amber-flicker'] {
+  --ring: #e3a34a;
+  --glow: #e3a34a;
+  animation: wave-amber 1.6s ease-in-out infinite;
+}
+.ring-light[data-state='amber-flicker-fast'] {
+  --ring: #e3a34a;
+  --glow: #e3a34a;
+  animation: wave-amber 1s ease-in-out infinite;
+}
+.ring-light[data-state='amber-flicker-slow'] {
+  --ring: #e3a34a;
+  --glow: #e3a34a;
+  animation: wave-amber 2.6s ease-in-out infinite;
+}
+/* 琥珀·紊乱：挣扎最剧烈处叠一抹红（程序紊乱瞬间） */
+.ring-light[data-state='amber-red-flicker'] {
+  --ring: #e3a34a;
+  --glow: #e3a34a;
+  animation: amber-red-flicker 1.4s ease-in-out infinite;
+}
+/* 红·过载：亮度急促起伏（不熄灭） */
+.ring-light[data-state='red-blink'] {
+  --ring: #e34a4a;
+  --glow: #e34a4a;
+  animation: wave-red 1s ease-in-out infinite;
+}
+/* 红·濒停：更快起伏 */
+.ring-light[data-state='red-fast'] {
+  --ring: #e34a4a;
+  --glow: #e34a4a;
+  animation: wave-red 0.6s ease-in-out infinite;
+}
+/* 熄灭：停机死亡 */
+.ring-light[data-state='off'] {
+  --ring: #1a2638;
+  --glow: transparent;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  animation: none;
+}
+
+@keyframes pulse-blue {
+  0%,
+  100% {
+    box-shadow: 0 0 8px var(--glow), 0 0 18px var(--glow), 0 0 32px rgba(74, 163, 227, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 14px var(--glow), 0 0 30px var(--glow), 0 0 52px rgba(74, 163, 227, 0.4);
+  }
+}
+@keyframes pulse-amber {
+  0%,
+  100% {
+    box-shadow: 0 0 8px var(--glow), 0 0 18px var(--glow), 0 0 32px rgba(227, 163, 74, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 14px var(--glow), 0 0 30px var(--glow), 0 0 52px rgba(227, 163, 74, 0.4);
+  }
+}
+/* 蓝→黄短闪：过渡用 ease，不再硬切 */
+@keyframes flicker-blue-yellow {
+  0%,
+  80%,
+  100% {
+    --ring: #4aa3e3;
+    --glow: #4aa3e3;
+    box-shadow: 0 0 10px #4aa3e3, 0 0 22px #4aa3e3, 0 0 38px rgba(74, 163, 227, 0.25);
+  }
+  88%,
+  94% {
+    --ring: #e3c14a;
+    --glow: #e3c14a;
+    box-shadow: 0 0 12px #e3c14a, 0 0 26px #e3c14a, 0 0 44px rgba(227, 193, 74, 0.35);
+  }
+}
+/* 琥珀亮度起伏：opacity 0.6↔1，不黑掉 */
+@keyframes wave-amber {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 12px var(--glow), 0 0 24px var(--glow), 0 0 40px rgba(227, 163, 74, 0.35);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 6px var(--glow), 0 0 12px var(--glow), 0 0 22px rgba(227, 163, 74, 0.15);
+  }
+}
+/* 琥珀为主 + 红短闪：挣扎/程序紊乱瞬间 */
+@keyframes amber-red-flicker {
+  0%,
+  70%,
+  100% {
+    --ring: #e3a34a;
+    --glow: #e3a34a;
+    opacity: 1;
+    box-shadow: 0 0 12px #e3a34a, 0 0 24px #e3a34a, 0 0 40px rgba(227, 163, 74, 0.35);
+  }
+  78%,
+  86% {
+    --ring: #e34a4a;
+    --glow: #e34a4a;
+    opacity: 0.85;
+    box-shadow: 0 0 14px #e34a4a, 0 0 28px #e34a4a, 0 0 46px rgba(227, 74, 74, 0.4);
+  }
+}
+/* 红色亮度起伏：opacity 0.4↔1，急促但不熄灭 */
+@keyframes wave-red {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 14px var(--glow), 0 0 30px var(--glow), 0 0 50px rgba(227, 74, 74, 0.4);
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 7px var(--glow), 0 0 15px var(--glow), 0 0 26px rgba(227, 74, 74, 0.18);
+  }
+}
