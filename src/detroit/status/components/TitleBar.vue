@@ -17,7 +17,7 @@ const store = useDataStore();
   justify-content: space-between;
   align-items: center;
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   color: var(--c-text-dim);
   border-bottom: 1px solid var(--c-border);
   padding-bottom: 10px;
@@ -25,9 +25,26 @@ const store = useDataStore();
 .cy-brand {
   color: var(--c-blue-deep);
   font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 .cy-model {
   color: var(--c-text-mute);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}
+@media (max-width: 520px) {
+  .cy-titlebar {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+  .cy-brand {
+    letter-spacing: 1px;
+  }
+  .cy-model {
+    max-width: 160px;
+  }
 }
 </style>

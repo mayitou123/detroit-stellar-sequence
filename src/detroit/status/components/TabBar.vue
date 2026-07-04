@@ -31,7 +31,7 @@ function select(id: string) {
 }
 .cy-tab-btn {
   flex: 1;
-  padding: 8px 6px;
+  padding: 8px 4px;
   border: none;
   background: transparent;
   color: var(--c-text-mute);
@@ -53,5 +53,12 @@ function select(id: string) {
   background: rgba(27, 156, 227, 0.22);
   color: var(--c-blue);
   text-shadow: 0 0 8px rgba(74, 163, 227, 0.5);
+}
+@media (max-width: 520px) {
+  .cy-tab-btn {
+    font-size: 10px;
+    padding: 7px 2px;
+    letter-spacing: 0;
+  }
 }
 </style>

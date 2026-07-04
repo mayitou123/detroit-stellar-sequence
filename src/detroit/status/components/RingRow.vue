@@ -32,40 +32,63 @@ const stats = computed(() => {
 <style lang="scss" scoped>
 .cy-rings {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 18px 0 10px;
+  justify-content: center;
+  gap: 36px;
+  margin: 18px auto 10px;
 }
 .cy-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
-  width: 150px;
+  gap: 6px;
+  width: 110px;
 }
 .cy-val {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 200;
   color: var(--c-text);
   font-variant-numeric: tabular-nums;
   text-shadow: 0 0 12px rgba(27, 156, 227, 0.4);
-  min-width: 48px;
   text-align: center;
+  line-height: 1;
 }
 .cy-lbl {
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: var(--c-text-mute);
   text-align: center;
+  white-space: nowrap;
 }
 .cy-sub {
   font-size: 10px;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   color: var(--c-text-dim);
-  height: 14px;
-  width: 100%;
   text-align: center;
-  white-space: nowrap;
+  line-height: 1.3;
+  min-height: 14px;
+}
+@media (max-width: 520px) {
+  .cy-rings {
+    gap: 12px;
+  }
+  .cy-stat {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .ring-light {
+    width: 40px;
+    height: 40px;
+  }
+  .cy-val {
+    font-size: 16px;
+  }
+  .cy-lbl {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+  .cy-sub {
+    font-size: 8px;
+  }
 }
 </style>

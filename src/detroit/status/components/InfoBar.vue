@@ -15,20 +15,18 @@ const store = useDataStore();
 <style lang="scss" scoped>
 .cy-info {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  gap: 28px;
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   color: var(--c-text-mute);
   padding: 8px 0 4px;
   border-bottom: 1px solid var(--c-border);
 }
-/* 等宽三栏：栏宽固定，内容字数变化只在本栏内裁切，不挤压兄弟栏 → 不跳变 */
 .cy-info-cell {
-  flex: 1 1 0;
-  min-width: 0;
   display: flex;
   gap: 4px;
-  overflow: hidden;
+  align-items: baseline;
 }
 .cy-info-cell b {
   color: var(--c-blue-deep);
@@ -40,6 +38,18 @@ const store = useDataStore();
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  min-width: 0;
+  max-width: 140px;
+}
+@media (max-width: 520px) {
+  .cy-info {
+    gap: 8px;
+    font-size: 9px;
+  }
+  .cy-info-cell {
+    gap: 1px;
+  }
+  .cy-info-cell i {
+    max-width: 70px;
+  }
 }
 </style>

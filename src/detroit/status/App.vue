@@ -68,4 +68,9 @@ const activeTab = useLocalStorage<string>('detroit:status:tab', 'encounter');
   margin-top: 12px;
   min-height: 80px;
 }
+@media (max-width: 520px) {
+  .cy-inner {
+    padding: 16px 10px 14px;
+  }
+}
 </style>
