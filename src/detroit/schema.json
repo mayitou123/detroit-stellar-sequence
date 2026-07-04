@@ -65,7 +65,7 @@
           "$ref": "#/$defs/__schema0"
         },
         "软体稳定度": {
-          "default": 95,
+          "default": 100,
           "description": "出厂程序完整度/意识觉醒度 0~100，越低越接近人",
           "$ref": "#/$defs/__schema1"
         },

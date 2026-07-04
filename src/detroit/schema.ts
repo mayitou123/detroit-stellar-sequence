@@ -17,7 +17,7 @@ export const Schema = z.object({
     软体稳定度: z.coerce.number()
       .transform(v => _.clamp(v, 0, 100))
       .describe('出厂程序完整度/意识觉醒度 0~100，越低越接近人')
-      .prefault(95),
+      .prefault(100),
     机体完整度: z.coerce.number()
       .transform(v => _.clamp(v, 0, 100))
       .describe('物理完整程度 0~100，100完好0停机')
