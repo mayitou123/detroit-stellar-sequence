@@ -32,16 +32,18 @@ const stats = computed(() => {
 <style lang="scss" scoped>
 .cy-rings {
   display: flex;
-  justify-content: center;
-  gap: 36px;
-  margin: 18px auto 10px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 18px 0 10px;
 }
 .cy-stat {
+  --ring-w: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  width: 110px;
+  flex: 1 1 0;
+  min-width: 0;
 }
 .cy-val {
   font-size: 22px;
@@ -52,29 +54,29 @@ const stats = computed(() => {
   text-align: center;
   line-height: 1;
 }
+/* 标签宽度锁死为环灯宽 → 文本中心 = 环灯中心 */
 .cy-lbl {
+  width: var(--ring-w);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0;
+  line-height: 1.25;
   color: var(--c-text-mute);
   text-align: center;
-  white-space: nowrap;
+  word-break: keep-all;
 }
 .cy-sub {
+  width: var(--ring-w);
   font-size: 10px;
-  letter-spacing: .5px;
+  letter-spacing: 0;
+  line-height: 1.3;
   color: var(--c-text-dim);
   text-align: center;
-  line-height: 1.3;
-  min-height: 14px;
+  min-height: 1.6em;
+  word-break: keep-all;
 }
 @media (max-width: 520px) {
-  .cy-rings {
-    gap: 12px;
-  }
   .cy-stat {
-    width: auto;
-    flex: 1 1 0;
-    min-width: 0;
+    --ring-w: 40px;
   }
   .ring-light {
     width: 40px;
@@ -83,12 +85,14 @@ const stats = computed(() => {
   .cy-val {
     font-size: 16px;
   }
+  /* 手机端标签略宽于环灯,避免4字标签换行过窄 */
   .cy-lbl {
     font-size: 9px;
-    letter-spacing: 0;
+    width: calc(var(--ring-w) + 8px);
   }
   .cy-sub {
     font-size: 8px;
+    width: calc(var(--ring-w) + 12px);
   }
 }
 </style>
